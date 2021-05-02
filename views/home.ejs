@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title><%=locals.title %></title>
+
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/home.css">
+    </head>
+    <body>
+        <h1><i class="fa fa-address-card"></i>
+            My Contact List
+        </h1>
+        <div id="contact-container">
+            <div class="contact-details">
+            <% for(i of contactList){%>
+           
+                <div class="details">
+                     <p><%=i.name%></p> <p><%=i.phone %>  <a href="/delete-contact?id=<%= i._id%>"><i class="fa fa-window-close"></i></a></p>
+                     
+                     
+                </div>
+                
+            
+               <% } %>
+            </div>
+
+
+        <form action="/create_contact" method="POST" name="contact-form" id="contact-form" onsubmit="return validationForm();">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <input type="number" name="number" placeholder="Enter the phone number" required>
+            <button type="submit">Add contact</button>
+        </form>
+    </div>
+
+
+    <script src="./js/form.js"></script>
+    </body>
+
+</html>
